@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CYBER_KEYS // SYSTEM_SHORTCUTS_v4.04</title>
+  <title>Shortcut Finder - 快捷鍵搜尋器</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -12,228 +12,90 @@
       theme: {
         extend: {
           colors: {
-            neon: {
-              cyan: '#00f0ff',
-              magenta: '#ff0055',
-              yellow: '#ffe600',
-              green: '#00ff66',
-              purple: '#b000ff',
-              dark: '#080811',
-              card: '#0f0f1b'
-            }
-          },
-          fontFamily: {
-            mono: ['"Share Tech Mono"', '"Fira Code"', 'Consolas', 'monospace']
+            primary: '#2563EB',
+            'primary-hover': '#1D4ED8',
           }
         }
       }
     }
   </script>
-  <!-- Google Fonts for High-Tech Monospace Look -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  
   <style>
-    /* Cyberpunk Styling Elements */
-    body {
-      font-family: 'Share Tech Mono', monospace;
-      background-color: #05050a;
-      background-image: 
-        radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
-        linear-gradient(rgba(255, 0, 85, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
-      background-size: 100% 100%, 30px 30px, 30px 30px;
-    }
-
-    /* Scanlines Overlay Effect */
-    .scanlines {
-      position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
-      pointer-events: none;
-      z-index: 99;
-      background: linear-gradient(
-        rgba(18, 16, 16, 0) 50%, 
-        rgba(0, 0, 0, 0.35) 50%
-      );
-      background-size: 100% 4px;
-    }
-
-    /* Chamfered/Clipped Corners */
-    .clip-cyber {
-      clip-path: polygon(
-        0 0, 
-        calc(100% - 14px) 0, 
-        100% 14px, 
-        100% 100%, 
-        14px 100%, 
-        0 calc(100% - 14px)
-      );
-    }
-    
-    .clip-cyber-lg {
-      clip-path: polygon(
-        0 0, 
-        calc(100% - 20px) 0, 
-        100% 20px, 
-        100% 100%, 
-        20px 100%, 
-        0 calc(100% - 20px)
-      );
-    }
-
-    .clip-tag {
-      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
-    }
-
-    /* Chromatic Aberration Text Effect */
-    .chromatic-text {
-      text-shadow: 
-        -1.5px -1.5px 0 rgba(255, 0, 85, 0.8),
-         1.5px  1.5px 0 rgba(0, 240, 255, 0.8);
-    }
-
-    /* Neon Shadows & Glows */
-    .neon-border-cyan {
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.3), inset 0 0 10px rgba(0, 240, 255, 0.2);
-    }
-    
-    .neon-border-magenta {
-      box-shadow: 0 0 10px rgba(ff, 0, 85, 0.4), inset 0 0 8px rgba(255, 0, 85, 0.2);
-    }
-
-    .neon-kbd {
-      background: #0a0c16;
-      border: 1px solid #00f0ff;
-      color: #00f0ff;
-      box-shadow: 0 0 6px rgba(0, 240, 255, 0.5), inset 0 0 4px rgba(0, 240, 255, 0.3);
-      text-shadow: 0 0 5px rgba(0, 240, 255, 0.8);
-    }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 4px;
-      height: 4px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #05050a;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #ff0055;
-      box-shadow: 0 0 8px #ff0055;
+    kbd {
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
     }
   </style>
 </head>
-<body class="text-slate-200 min-h-screen relative font-mono selection:bg-neon-magenta selection:text-black">
+<body class="bg-white text-gray-900 transition-colors duration-300 dark:bg-slate-900 dark:text-slate-100 min-h-screen">
 
-  <!-- Scanline CRT Effect -->
-  <div class="scanlines"></div>
-
-  <!-- Cyberpunk Top HUD / Header -->
-  <header class="sticky top-0 z-50 h-[68px] border-b border-neon-cyan/40 bg-black/80 backdrop-blur-md px-4 sm:px-8 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <div class="relative flex items-center justify-center w-9 h-9 border border-neon-cyan bg-neon-cyan/10 clip-cyber">
-        <i data-lucide="terminal" class="w-5 h-5 text-neon-cyan animate-pulse"></i>
-      </div>
-      <div>
-        <div class="flex items-center gap-2">
-          <span class="font-black text-xl tracking-widest text-white chromatic-text uppercase">CYBER_KEYS</span>
-          <span class="text-[10px] px-1.5 py-0.5 bg-neon-magenta/20 text-neon-magenta border border-neon-magenta/60 font-bold tracking-wider">v4.04</span>
-        </div>
-        <p class="text-[10px] text-neon-cyan/70 tracking-tight font-mono hidden sm:block">> SYSTEM_SHORTCUT_DATABASE // AUTHORIZED_ONLY</p>
-      </div>
+  <!-- Header -->
+  <header class="sticky top-0 z-50 h-[64px] border-b border-gray-200 bg-white/80 backdrop-blur-md dark:border-slate-800 dark:bg-slate-900/80 px-6 flex items-center justify-between">
+    <div class="flex items-center gap-2 font-bold text-xl">
+      <i data-lucide="keyboard" class="w-6 h-6 text-primary"></i>
+      <span>Shortcut Finder</span>
     </div>
-
-    <!-- Right Control Panel -->
-    <div class="flex items-center gap-3 sm:gap-5">
-      <!-- Platform Toggle (Mac / Win) -->
-      <button id="platform-toggle" class="relative group px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-neon-cyan bg-black border border-neon-cyan/60 clip-cyber hover:bg-neon-cyan hover:text-black transition-all duration-200 neon-border-cyan">
-        <span class="flex items-center gap-1.5">
-          <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
-          <span id="platform-text">OS: macOS</span>
-        </span>
+    <div class="flex items-center gap-4">
+      <!-- 系統切換 Mac / Windows -->
+      <button id="platform-toggle" class="px-3 py-1.5 text-xs font-semibold rounded-lg border border-gray-300 dark:border-slate-700 bg-gray-50 dark:bg-slate-800 hover:bg-gray-100 dark:hover:bg-slate-700 transition">
+        <span id="platform-text">macOS</span>
       </button>
-
-      <!-- System Status Indicator -->
-      <div class="hidden md:flex items-center gap-2 text-xs text-neon-green border border-neon-green/30 bg-neon-green/5 px-2.5 py-1">
-        <span class="w-2 h-2 rounded-full bg-neon-green animate-ping"></span>
-        <span class="tracking-widest text-[10px]">NET_LINK: ONLINE</span>
-      </div>
+      <!-- Dark Mode Toggle -->
+      <button id="theme-toggle" class="p-2 rounded-lg border border-gray-200 dark:border-slate-800 hover:bg-gray-100 dark:hover:bg-slate-800 transition" aria-label="Toggle Theme">
+        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+        <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+      </button>
     </div>
   </header>
 
-  <!-- Main Cyber Container -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 relative z-10">
-    
-    <!-- Decorative Corner Decals -->
-    <div class="flex justify-between items-center text-[10px] text-neon-cyan/40 mb-2 font-mono uppercase tracking-widest">
-      <span>[LOC: DB_NODE_09]</span>
-      <span>[SECURITY_LEVEL: OMNI]</span>
+  <main class="max-w-6xl mx-auto px-4 py-6">
+    <!-- Search Area -->
+    <div class="relative max-w-[720px] mx-auto mb-6">
+      <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+      <input 
+        type="text" 
+        id="search-input"
+        placeholder="搜尋功能、工具、快捷鍵..." 
+        class="w-full h-[48px] pl-12 pr-28 rounded-xl border border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-base shadow-sm focus:outline-none focus:border-primary dark:focus:border-primary transition"
+      />
+      <span id="results-count" class="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-gray-400">
+        0 Results
+      </span>
     </div>
 
-    <!-- Search Terminal Box -->
-    <div class="relative max-w-3xl mx-auto mb-6">
-      <div class="absolute -inset-0.5 bg-gradient-to-r from-neon-cyan via-neon-magenta to-neon-yellow opacity-40 blur clip-cyber"></div>
-      <div class="relative flex items-center bg-black border border-neon-cyan/80 clip-cyber p-1">
-        <div class="pl-3 pr-2 text-neon-cyan">
-          <i data-lucide="search" class="w-5 h-5"></i>
-        </div>
-        <input 
-          type="text" 
-          id="search-input"
-          placeholder="ENTER_COMMAND_OR_KEYWORD..." 
-          class="w-full h-11 bg-transparent text-neon-cyan placeholder-neon-cyan/40 text-sm font-mono tracking-wider uppercase focus:outline-none"
-        />
-        <div class="px-3 py-1 bg-neon-cyan/10 border-l border-neon-cyan/30 text-neon-cyan text-xs font-mono hidden sm:block">
-          <span id="results-count" class="text-neon-yellow font-bold">0</span> UNITS_FOUND
-        </div>
-      </div>
+    <!-- Software Tabs -->
+    <div class="flex justify-center gap-2 mb-4 flex-wrap" id="software-tabs">
+      <button data-software="photoshop" class="tab-btn px-4 py-2 rounded-full text-xs font-semibold transition bg-primary text-white">Photoshop</button>
+      <button data-software="illustrator" class="tab-btn px-4 py-2 rounded-full text-xs font-semibold transition bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-700">Illustrator</button>
+      <button data-software="figma" class="tab-btn px-4 py-2 rounded-full text-xs font-semibold transition bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-700">Figma</button>
+      <button data-software="word" class="tab-btn px-4 py-2 rounded-full text-xs font-semibold transition bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-700">Word</button>
+      <button data-software="vscode" class="tab-btn px-4 py-2 rounded-full text-xs font-semibold transition bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-700">VS Code</button>
+      <button data-software="premiere" class="tab-btn px-4 py-2 rounded-full text-xs font-semibold transition bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-700">Premiere Pro</button>
     </div>
 
-    <!-- Software Selector (Tabs) -->
-    <div class="flex justify-center gap-1.5 sm:gap-2 mb-5 flex-wrap" id="software-tabs">
-      <button data-software="photoshop" class="tab-btn px-3 sm:px-4 py-1.5 clip-cyber text-xs font-bold tracking-wider uppercase transition border border-neon-cyan bg-neon-cyan text-black shadow-[0_0_10px_rgba(0,240,255,0.6)]">Photoshop</button>
-      <button data-software="illustrator" class="tab-btn px-3 sm:px-4 py-1.5 clip-cyber text-xs font-bold tracking-wider uppercase transition border border-neon-cyan/40 bg-black/60 text-neon-cyan hover:border-neon-cyan hover:bg-neon-cyan/10">Illustrator</button>
-      <button data-software="figma" class="tab-btn px-3 sm:px-4 py-1.5 clip-cyber text-xs font-bold tracking-wider uppercase transition border border-neon-cyan/40 bg-black/60 text-neon-cyan hover:border-neon-cyan hover:bg-neon-cyan/10">Figma</button>
-      <button data-software="word" class="tab-btn px-3 sm:px-4 py-1.5 clip-cyber text-xs font-bold tracking-wider uppercase transition border border-neon-cyan/40 bg-black/60 text-neon-cyan hover:border-neon-cyan hover:bg-neon-cyan/10">Word</button>
-      <button data-software="vscode" class="tab-btn px-3 sm:px-4 py-1.5 clip-cyber text-xs font-bold tracking-wider uppercase transition border border-neon-cyan/40 bg-black/60 text-neon-cyan hover:border-neon-cyan hover:bg-neon-cyan/10">VS Code</button>
-      <button data-software="premiere" class="tab-btn px-3 sm:px-4 py-1.5 clip-cyber text-xs font-bold tracking-wider uppercase transition border border-neon-cyan/40 bg-black/60 text-neon-cyan hover:border-neon-cyan hover:bg-neon-cyan/10">Premiere Pro</button>
+    <!-- Category Filter (預設選中 Popular) -->
+    <div class="flex gap-2 mb-6 overflow-x-auto pb-1 scrollbar-none justify-start md:justify-center" id="category-filters">
+      <button data-category="all" class="cat-btn px-3 py-1 rounded-lg text-xs font-medium transition text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-800">All</button>
+      <button data-category="popular" class="cat-btn px-3 py-1 rounded-lg text-xs font-medium transition bg-gray-900 text-white dark:bg-slate-100 dark:text-slate-900">Popular (Top 6)</button>
+      <button data-category="tool" class="cat-btn px-3 py-1 rounded-lg text-xs font-medium transition text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-800">Tool</button>
+      <button data-category="edit" class="cat-btn px-3 py-1 rounded-lg text-xs font-medium transition text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-800">Edit</button>
+      <button data-category="layer" class="cat-btn px-3 py-1 rounded-lg text-xs font-medium transition text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-800">Layer</button>
+      <button data-category="selection" class="cat-btn px-3 py-1 rounded-lg text-xs font-medium transition text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-800">Selection</button>
     </div>
 
-    <!-- Category Filter Bar -->
-    <div class="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-none justify-start md:justify-center border-b border-neon-cyan/20 px-2" id="category-filters">
-      <button data-category="all" class="cat-btn px-3 py-1 clip-tag text-xs font-bold uppercase transition border border-neon-magenta/40 text-neon-magenta/70 hover:text-neon-magenta hover:border-neon-magenta">ALL_NODES</button>
-      <button data-category="popular" class="cat-btn px-3 py-1 clip-tag text-xs font-bold uppercase transition border border-neon-magenta bg-neon-magenta text-black shadow-[0_0_8px_rgba(255,0,85,0.6)]">TOP_6_PRIORITY</button>
-      <button data-category="tool" class="cat-btn px-3 py-1 clip-tag text-xs font-bold uppercase transition border border-neon-magenta/40 text-neon-magenta/70 hover:text-neon-magenta hover:border-neon-magenta">TOOLS</button>
-      <button data-category="edit" class="cat-btn px-3 py-1 clip-tag text-xs font-bold uppercase transition border border-neon-magenta/40 text-neon-magenta/70 hover:text-neon-magenta hover:border-neon-magenta">EDITING</button>
-      <button data-category="layer" class="cat-btn px-3 py-1 clip-tag text-xs font-bold uppercase transition border border-neon-magenta/40 text-neon-magenta/70 hover:text-neon-magenta hover:border-neon-magenta">LAYERS</button>
-      <button data-category="selection" class="cat-btn px-3 py-1 clip-tag text-xs font-bold uppercase transition border border-neon-magenta/40 text-neon-magenta/70 hover:text-neon-magenta hover:border-neon-magenta">SELECTION</button>
-    </div>
-
-    <!-- Shortcut Cards Grid (Compact & Cyberpunk High-Density) -->
-    <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5"></div>
+    <!-- Cards Grid (更緊湊的網格佈局) -->
+    <div id="cards-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
 
     <!-- Empty State -->
-    <div id="empty-state" class="hidden text-center py-16 border border-dashed border-neon-magenta/40 bg-neon-magenta/5 clip-cyber">
-      <i data-lucide="alert-triangle" class="w-10 h-10 mx-auto text-neon-magenta mb-2 animate-bounce"></i>
-      <h3 class="text-lg font-bold text-neon-magenta tracking-wider uppercase">NO_DATA_MATCHED_IN_SECTOR</h3>
-      <p class="text-xs text-neon-cyan/60 mt-1 font-mono">> RE-ENTER PARAMETERS OR RESET SEARCH_FILTER</p>
+    <div id="empty-state" class="hidden text-center py-12">
+      <i data-lucide="search-x" class="w-10 h-10 mx-auto text-gray-400 mb-3"></i>
+      <h3 class="text-base font-semibold mb-1">找不到符合的快捷鍵</h3>
+      <p class="text-xs text-gray-500">請試試其他關鍵字</p>
     </div>
-
-    <!-- Footer Meta Info -->
-    <footer class="mt-12 pt-4 border-t border-neon-cyan/20 flex flex-col sm:flex-row items-center justify-between text-[11px] text-neon-cyan/50 gap-2">
-      <div>SYSTEM_ID: NTH-8802 // NEON_PROTOCOL_ACTIVE</div>
-      <div class="flex items-center gap-4">
-        <span>STATUS: 200_OK</span>
-        <span class="text-neon-yellow">NEON_GLOW: ENABLED</span>
-      </div>
-    </footer>
   </main>
 
   <script>
-    // Expanded Cyberpunk Shortcut Dataset
+    // 擴充內建快捷鍵資料庫
     const shortcutsData = [
       // Photoshop
       { id: 1, software: "photoshop", category: "tool", name: "Move Tool", zh: "移動工具", shortcutMac: "V", shortcutWindows: "V", description: "移動圖層或選取內容。", keywords: ["move", "tool", "移動", "箭頭"], popularity: 100 },
@@ -287,12 +149,17 @@
       { id: 5006, software: "premiere", category: "edit", name: "Zoom In/Out", zh: "時間軸縮放", shortcutMac: "= / -", shortcutWindows: "= / -", description: "放大或縮小時間軸顯示。", keywords: ["zoom", "timeline", "縮放"], popularity: 92 }
     ];
 
-    // System States (Default to Top 6 / Popular)
+    // State (預設 category 設為 'popular')
     let currentSoftware = 'photoshop';
     let currentCategory = 'popular';
     let searchQuery = '';
-    let currentPlatform = localStorage.getItem('cyber_platform') || 'mac';
-    let favorites = JSON.parse(localStorage.getItem('cyber_favorites') || '[]');
+    let currentPlatform = localStorage.getItem('platform') || 'mac';
+    let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+    // Theme Setup
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
 
     // Elements
     const searchInput = document.getElementById('search-input');
@@ -301,7 +168,7 @@
     const resultsCount = document.getElementById('results-count');
     const platformText = document.getElementById('platform-text');
 
-    // Cyber Rendering Core
+    // Filter & Render Function
     function render() {
       const q = searchQuery.trim().toLowerCase();
 
@@ -322,12 +189,12 @@
                item.keywords.some(k => k.toLowerCase().includes(q));
       }).sort((a, b) => b.popularity - a.popularity);
 
-      // Homepage default limit: 6 Most Popular Cards
+      // 當選擇 Popular 且沒有搜尋字詞時，嚴格僅顯示前 6 個項目
       if (currentCategory === 'popular' && !q) {
         filtered = filtered.slice(0, 6);
       }
 
-      resultsCount.textContent = filtered.length;
+      resultsCount.textContent = `${filtered.length} Results`;
 
       if (filtered.length === 0) {
         cardsGrid.innerHTML = '';
@@ -336,45 +203,35 @@
       }
 
       emptyState.classList.add('hidden');
-      cardsGrid.innerHTML = filtered.map((item, index) => {
+      cardsGrid.innerHTML = filtered.map(item => {
         const isFav = favorites.includes(item.id);
         const keysStr = currentPlatform === 'mac' ? item.shortcutMac : item.shortcutWindows;
         const keys = keysStr.split(' ');
 
         return `
-          <div class="group relative flex flex-col justify-between clip-cyber border border-neon-cyan/30 bg-neon-card/90 p-3.5 transition-all duration-300 hover:border-neon-cyan hover:shadow-[0_0_15px_rgba(0,240,255,0.25)] hover:-translate-y-0.5">
-            
-            <!-- Cyberpunk Top Bar Info -->
+          <div class="group relative flex flex-col justify-between rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-800">
             <div>
-              <div class="flex items-center justify-between gap-2 border-b border-neon-cyan/10 pb-2 mb-2">
-                <span class="px-1.5 py-0.5 text-[9px] font-bold text-neon-yellow bg-neon-yellow/10 border border-neon-yellow/30 uppercase tracking-widest clip-tag">
-                  [${item.category}]
+              <div class="flex items-center justify-between gap-2">
+                <span class="rounded-md bg-gray-100 px-2 py-0.5 text-[10px] font-semibold text-gray-500 uppercase tracking-wider dark:bg-slate-700 dark:text-slate-300">
+                  ${item.category}
                 </span>
-                <div class="flex items-center gap-2">
-                  <span class="text-[9px] text-neon-cyan/40 font-mono">ID:${String(item.id).padStart(4, '0')}</span>
-                  <button onclick="toggleFavorite(${item.id})" class="p-1 text-neon-cyan/40 hover:text-neon-yellow transition" aria-label="Favorite">
-                    <i data-lucide="star" class="w-3.5 h-3.5 ${isFav ? 'fill-neon-yellow text-neon-yellow drop-shadow-[0_0_5px_#ffe600]' : ''}"></i>
-                  </button>
-                </div>
+                <button onclick="toggleFavorite(${item.id})" class="p-1 text-gray-400 hover:text-yellow-400 transition" aria-label="Favorite">
+                  <i data-lucide="star" class="w-4 h-4 ${isFav ? 'fill-yellow-400 text-yellow-400' : ''}"></i>
+                </button>
               </div>
               
-              <!-- Prominent Enlarged Header Text -->
-              <div>
-                <h3 class="text-xl font-black text-white tracking-wide chromatic-text leading-tight">${item.zh}</h3>
-                <p class="text-xs font-bold text-neon-cyan/80 font-mono mt-0.5 uppercase tracking-wider">${item.name}</p>
+              <!-- 重點文字：中文名稱與關鍵資訊放大提升視覺焦點 -->
+              <div class="mt-2">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-slate-100 leading-snug">${item.zh}</h3>
+                <p class="text-xs font-semibold text-gray-400 dark:text-slate-400 mt-0.5">${item.name}</p>
               </div>
-
-              <!-- Brief Description -->
-              <p class="mt-1.5 text-[11px] text-slate-400 font-mono leading-relaxed line-clamp-2">${item.description}</p>
+              <p class="mt-1.5 text-xs text-gray-500 dark:text-slate-400 line-clamp-2 leading-relaxed">${item.description}</p>
             </div>
 
-            <!-- Highly Highlighted Enlarged Keyboard Shortcuts -->
-            <div class="mt-3 pt-2.5 border-t border-neon-cyan/20 flex flex-wrap items-center gap-1.5">
-              ${keys.map(k => `<kbd class="neon-kbd px-2.5 py-0.5 text-base font-black font-mono clip-tag tracking-wider">${k}</kbd>`).join('')}
+            <!-- 重點文字放大：快捷鍵 <kbd> 放大呈現 -->
+            <div class="mt-4 flex flex-wrap items-center gap-1.5 pt-3 border-t border-gray-100 dark:border-slate-700/60">
+              ${keys.map(k => `<kbd class="min-w-[36px] text-center inline-block rounded-lg border border-gray-300 bg-gray-50 px-2.5 py-1 text-lg font-extrabold font-mono text-primary dark:border-slate-600 dark:bg-slate-900 dark:text-blue-400">${k}</kbd>`).join('')}
             </div>
-            
-            <!-- Decorative Accent Bar -->
-            <div class="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-neon-magenta/60"></div>
           </div>
         `;
       }).join('');
@@ -382,18 +239,18 @@
       lucide.createIcons();
     }
 
-    // Toggle Favorite Logic
+    // Toggle Favorite
     window.toggleFavorite = function(id) {
       if (favorites.includes(id)) {
         favorites = favorites.filter(fId => fId !== id);
       } else {
         favorites.push(id);
       }
-      localStorage.setItem('cyber_favorites', JSON.stringify(favorites));
+      localStorage.setItem('favorites', JSON.stringify(favorites));
       render();
     };
 
-    // Event Bindings
+    // Event Listeners
     searchInput.addEventListener('input', (e) => {
       searchQuery = e.target.value;
       render();
@@ -403,9 +260,9 @@
       const btn = e.target.closest('.tab-btn');
       if (!btn) return;
       document.querySelectorAll('.tab-btn').forEach(b => {
-        b.className = 'tab-btn px-3 sm:px-4 py-1.5 clip-cyber text-xs font-bold tracking-wider uppercase transition border border-neon-cyan/40 bg-black/60 text-neon-cyan hover:border-neon-cyan hover:bg-neon-cyan/10';
+        b.className = 'tab-btn px-4 py-2 rounded-full text-xs font-semibold transition bg-gray-100 dark:bg-slate-800 text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-700';
       });
-      btn.className = 'tab-btn px-3 sm:px-4 py-1.5 clip-cyber text-xs font-bold tracking-wider uppercase transition border border-neon-cyan bg-neon-cyan text-black shadow-[0_0_10px_rgba(0,240,255,0.6)]';
+      btn.className = 'tab-btn px-4 py-2 rounded-full text-xs font-semibold transition bg-primary text-white';
       currentSoftware = btn.dataset.software;
       render();
     });
@@ -414,21 +271,26 @@
       const btn = e.target.closest('.cat-btn');
       if (!btn) return;
       document.querySelectorAll('.cat-btn').forEach(b => {
-        b.className = 'cat-btn px-3 py-1 clip-tag text-xs font-bold uppercase transition border border-neon-magenta/40 text-neon-magenta/70 hover:text-neon-magenta hover:border-neon-magenta';
+        b.className = 'cat-btn px-3 py-1 rounded-lg text-xs font-medium transition text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-800';
       });
-      btn.className = 'cat-btn px-3 py-1 clip-tag text-xs font-bold uppercase transition border border-neon-magenta bg-neon-magenta text-black shadow-[0_0_8px_rgba(255,0,85,0.6)]';
+      btn.className = 'cat-btn px-3 py-1 rounded-lg text-xs font-medium transition bg-gray-900 text-white dark:bg-slate-100 dark:text-slate-900';
       currentCategory = btn.dataset.category;
       render();
     });
 
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
     document.getElementById('platform-toggle').addEventListener('click', () => {
       currentPlatform = currentPlatform === 'mac' ? 'windows' : 'mac';
-      platformText.textContent = `OS: ${currentPlatform === 'mac' ? 'macOS' : 'WIN'}`;
-      localStorage.setItem('cyber_platform', currentPlatform);
+      platformText.textContent = currentPlatform === 'mac' ? 'macOS' : 'Windows';
+      localStorage.setItem('platform', currentPlatform);
       render();
     });
 
-    // Keyboard ESC Shortcut to Reset Search
+    // Keyboard Shortcuts (ESC to clear search)
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         searchInput.value = '';
@@ -437,8 +299,8 @@
       }
     });
 
-    // Initial Execution
-    platformText.textContent = `OS: ${currentPlatform === 'mac' ? 'macOS' : 'WIN'}`;
+    // Initial Init
+    platformText.textContent = currentPlatform === 'mac' ? 'macOS' : 'Windows';
     render();
   </script>
 </body>
